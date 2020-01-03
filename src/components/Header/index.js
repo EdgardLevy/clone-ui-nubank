@@ -3,24 +3,21 @@ import logo from '~/assets/Nubank_Logo.png';
 import {Container, Top, Logo, Title} from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TouchableWithoutFeedback} from 'react-native';
-export default function Header({arrowDirection = 'down', onArrowClick}) {
+export default function Header({opened = false, onArrowClick}) {
   return (
-    <Container>
-      <Top>
-        <Logo source={logo} />
-        <Title>Edgard</Title>
-      </Top>
-      <TouchableWithoutFeedback onPress={onArrowClick}>
+    <TouchableWithoutFeedback onPress={onArrowClick}>
+      <Container>
+        <Top>
+          <Logo source={logo} />
+          <Title>Edgard</Title>
+        </Top>
+
         <Icon
-          name={
-            arrowDirection === 'down'
-              ? 'keyboard-arrow-down'
-              : 'keyboard-arrow-up'
-          }
+          name={opened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
           size={20}
           color="#FFF"
         />
-      </TouchableWithoutFeedback>
-    </Container>
+      </Container>
+    </TouchableWithoutFeedback>
   );
 }
