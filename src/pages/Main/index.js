@@ -21,7 +21,12 @@ import {
 export default function Main() {
   let offset = 0;
   let opened = false;
+  let fullOpened = false;
   const translateY = new Animated.Value(0);
+  translateY.addListener(({value}) => {
+    console.tron.log(value);
+    fullOpened = value >= 380;
+  });
 
   function onHandlerStateChange(event) {
     //console.tron.log(event);
