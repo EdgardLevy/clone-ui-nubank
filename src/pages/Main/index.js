@@ -21,22 +21,15 @@ import {
 export default function Main() {
   let offset = 0;
   let opened = false;
-  let fullOpened = false;
   const translateY = new Animated.Value(0);
-  translateY.addListener(({value}) => {
-    console.tron.log(value);
-    fullOpened = value >= 380;
-  });
-
   function onHandlerStateChange(event) {
-    //console.tron.log(event);
     if (event.nativeEvent.oldState === State.ACTIVE) {
       opened = false;
 
       const {translationY} = event.nativeEvent;
       offset += translationY;
 
-      if (translationY >= 100) {
+      if (translationY >= 80) {
         opened = true;
       } else {
         translateY.setValue(offset);
@@ -52,7 +45,6 @@ export default function Main() {
         offset = opened ? 380 : 0;
         translateY.setOffset(offset);
         translateY.setValue(0);
-        console.tron.log('animation finish');
       });
     }
   }
@@ -71,7 +63,25 @@ export default function Main() {
   );
 
   function onArrowClick() {
-    console.tron.log('arrowClick');
+    opened = false;
+    if (offset >= 80) {
+      opened = true;
+      translateY.setOffset(0);
+      translateY.setValue(380);
+    } else {
+      translateY.setOffset(0);
+      translateY.setValue(0);
+    }
+    offset = 0;
+    Animated.timing(translateY, {
+      toValue: opened ? 0 : 380,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => {
+      offset = opened ? 0 : 380;
+      translateY.setOffset(offset);
+      translateY.setValue(0);
+    });
   }
 
   return (
@@ -105,7 +115,7 @@ export default function Main() {
             </CardContent>
             <CardFooter>
               <Annotation>
-                Transferência de R$ 375,00 recebida de Edgard Levy às 9:00
+                Transferência de R$ 3.775,00 recebida de Edgard Levy às 9:00
               </Annotation>
             </CardFooter>
           </Card>
