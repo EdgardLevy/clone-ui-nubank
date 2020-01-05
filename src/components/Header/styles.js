@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import RNIcon from 'react-native-vector-icons/MaterialIcons';
+import {Animated} from 'react-native';
 
 export const Container = styled.View`
   align-items: center;
@@ -18,3 +20,6 @@ export const Title = styled.Text`
   font-weight: bold;
   margin-left: 8px;
 `;
+
+const AnimatedIcon = Animated.createAnimatedComponent(RNIcon);
+export const Icon = styled(AnimatedIcon)``;

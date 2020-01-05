@@ -86,7 +86,7 @@ export default function Main() {
 
   return (
     <Container>
-      <Header onArrowClick={onArrowClick} />
+      <Header translateY={translateY} onArrowClick={onArrowClick} />
       <Content>
         <Menu translateY={translateY} />
 

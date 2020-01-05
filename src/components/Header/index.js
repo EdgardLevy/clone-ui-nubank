@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '~/assets/Nubank_Logo.png';
-import {Container, Top, Logo, Title} from './styles';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Container, Top, Logo, Title, Icon} from './styles';
+
 import {TouchableWithoutFeedback} from 'react-native';
-export default function Header({opened = false, onArrowClick}) {
+export default function Header({translateY, onArrowClick}) {
   return (
     <TouchableWithoutFeedback onPress={onArrowClick}>
       <Container>
@@ -13,9 +13,20 @@ export default function Header({opened = false, onArrowClick}) {
         </Top>
 
         <Icon
-          name={opened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
+          name="keyboard-arrow-down"
           size={20}
           color="#FFF"
+          style={{
+            transform: [
+              {
+                rotate: translateY.interpolate({
+                  inputRange: [0, 380],
+                  outputRange: ['0deg', '-180deg'],
+                  extrapolate: 'clamp',
+                }),
+              },
+            ],
+          }}
         />
       </Container>
     </TouchableWithoutFeedback>
