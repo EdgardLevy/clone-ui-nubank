@@ -1,6 +1,6 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Animated} from 'react-native';
+import {Animated, Dimensions} from 'react-native';
 import {PanGestureHandler, State} from 'react-native-gesture-handler';
 import Header from '~/components/Header';
 import Menu from '~/components/Menu';
@@ -22,6 +22,16 @@ export default function Main() {
   let offset = 0;
   let opened = false;
   const translateY = new Animated.Value(0);
+  const tabsXValue = new Animated.Value(Dimensions.get('window').width);
+
+  useEffect(() => {
+    Animated.spring(tabsXValue, {
+      toValue: 0,
+      bounciness: 15,
+      useNativeDriver: true,
+    }).start();
+  }, [tabsXValue]);
+
   function onHandlerStateChange(event) {
     if (event.nativeEvent.oldState === State.ACTIVE) {
       opened = false;
@@ -103,6 +113,9 @@ export default function Main() {
                     extrapolate: 'clamp',
                   }),
                 },
+                {
+                  translateX: tabsXValue,
+                },
               ],
             }}>
             <CardHeader>
@@ -121,7 +134,7 @@ export default function Main() {
           </Card>
         </PanGestureHandler>
       </Content>
-      <Tabs translateY={translateY} />
+      <Tabs translateY={translateY} translateX={tabsXValue} />
     </Container>
   );
 }

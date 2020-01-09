@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Container, TabsContainer, TabItem, TabText} from './styles';
 
-export default function Tabs({translateY}) {
+export default function Tabs({translateY, translateX}) {
   return (
     <Container
       style={{
@@ -16,6 +16,11 @@ export default function Tabs({translateY}) {
           outputRange: [1, 0.3],
           extrapolate: 'clamp',
         }),
+        transform: [
+          {
+            translateX: translateX,
+          },
+        ],
       }}>
       <TabsContainer>
         <TabItem>
