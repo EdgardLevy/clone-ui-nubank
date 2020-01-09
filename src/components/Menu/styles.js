@@ -44,3 +44,25 @@ export const SignOutButtonText = styled.Text`
   font-weight: bold;
   font-size: 13px;
 `;
+
+export const BankAccount = styled.View`
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const BankTitle = styled.Text`
+  font-size: 14px;
+  color: #fff;
+  margin-top: 10px;
+`;
+
+export const BankAgencyTitle = styled.Text`
+  font-size: 14px;
+  color: #fff;
+  margin-top: 5px;
+`;
+export const BankAccountTitle = styled.Text`
+  font-size: 14px;
+  color: #fff;
+  margin-top: 5px;
+`;

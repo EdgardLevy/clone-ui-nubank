@@ -10,6 +10,10 @@ import {
   NavText,
   SignOutButton,
   SignOutButtonText,
+  BankAccount,
+  BankTitle,
+  BankAgencyTitle,
+  BankAccountTitle,
 } from './styles';
 
 export default function Menu({translateY}) {
@@ -29,6 +33,11 @@ export default function Menu({translateY}) {
           backgroundColor="#8B10AE"
         />
       </Code>
+      <BankAccount>
+        <BankTitle>Banco 260 - Nu Pagamentos S.A</BankTitle>
+        <BankAgencyTitle>Agência 0001</BankAgencyTitle>
+        <BankAccountTitle>Conta 0000000-0</BankAccountTitle>
+      </BankAccount>
       <Nav>
         <NavItem>
           <Icon name="help-outline" size={20} color="#fff" />

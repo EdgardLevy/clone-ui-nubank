@@ -14,7 +14,7 @@ export default function Header({translateY, onArrowClick}) {
 
         <Icon
           name="keyboard-arrow-down"
-          size={20}
+          size={24}
           color="#FFF"
           style={{
             transform: [
